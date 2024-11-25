@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+    <h1>User Profile</h1>
+    <img src="{{ user.avatar.url }}" alt="Avatar" style="max-width: 150px;">
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    {% if user.bio %}
+    <p>Bio: {{ user.bio }}</p>
+    {% else %}
+    <p>You have not set a bio yet.</p>
+    {% endif %}
+    <a href="{% url 'user_profiles:update' %}">Update Profile</a>
+
+    <!-- Кнопка для переходу на сторінку завантаження медіа файлів -->
+    <div style="margin-top: 20px;">
+        <a href="/media-files/" class="btn" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: white; background-color: #007BFF; text-decoration: none; border-radius: 5px;">
+            Завантаження медіа файлів
+        </a>
+    </div>
+{% endblock %}

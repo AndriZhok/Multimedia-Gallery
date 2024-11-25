@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Files</title>
+</head>
+<body>
+    <h1>Media Files</h1>
+    <a href="{% url 'media_files:create' %}">Upload New Media</a>
+    <ul>
+        {% for media in media_files %}
+        <li>
+            <strong>{{ media.title }}</strong> ({{ media.media_type }})<br>
+            {% if media.media_type == "image" %}
+                <img src="{{ media.file.url }}" alt="{{ media.title }}" style="max-width: 200px;">
+            {% elif media.media_type == "audio" %}
+                <audio controls>
+                    <source src="{{ media.file.url }}">
+                    Your browser does not support audio playback.
+                </audio>
+            {% elif media.media_type == "video" %}
+                <video controls style="max-width: 400px;">
+                    <source src="{{ media.file.url }}">
+                    Your browser does not support video playback.
+                </video>
+            {% endif %}
+            <a href="{% url 'media_files:delete' media.id %}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

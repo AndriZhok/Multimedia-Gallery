@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Профіль{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Email: {{ user.email }}</p>
+    {% if user.bio %}
+    <p>Bio: {{ user.bio }}</p>
+    {% else %}
+    <p>You have not set a bio yet.</p>
+    {% endif %}
+{% endblock %}

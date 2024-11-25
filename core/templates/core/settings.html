@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Settings</title>
+</head>
+<body>
+    <h1>App Settings</h1>
+    <ul>
+        {% for setting in settings %}
+        <li>
+            <strong>{{ setting.key }}</strong>: {{ setting.value }}
+            <a href="{% url 'core:edit_setting' setting.id %}">Edit</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
